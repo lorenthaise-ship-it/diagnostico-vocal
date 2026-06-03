@@ -13,12 +13,17 @@
   --text:#e8e2d6;--text-muted:#7a7468;--text-dim:#4a4840;
 }
 html,body{margin:0;padding:0;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-.app{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1.5rem}
+.app{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1.2rem}
+
 canvas#waves{position:fixed;inset:0;width:100%;height:100%;opacity:.13;pointer-events:none;z-index:0}
 #particles{position:fixed;inset:0;pointer-events:none;z-index:0}
 .particle{position:absolute;border-radius:50%;pointer-events:none;animation:floatUp linear infinite}
 @keyframes floatUp{0%{opacity:0;transform:translateY(0) scale(0)}20%{opacity:.6}80%{opacity:.3}100%{opacity:0;transform:translateY(-100vh) scale(1.5)}}
-.screen{position:absolute;width:100%;max-width:600px;padding:0 1rem;flex-direction:column;align-items:center;gap:1.4rem;z-index:1;transition:opacity .35s ease}
+
+/* ── SCREENS ── */
+.screen{position:absolute;width:100%;max-width:600px;padding:0 .5rem;flex-direction:column;align-items:center;gap:1.4rem;z-index:1;transition:opacity .35s ease}
+
+/* ── HOME ── */
 .home-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:.6rem}
 .home-eyebrow::before,.home-eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim))}
 .home-eyebrow::after{background:linear-gradient(90deg,var(--gold-dim),transparent)}
@@ -29,33 +34,49 @@ canvas#waves{position:fixed;inset:0;width:100%;height:100%;opacity:.13;pointer-e
 .mic-ring:nth-child(3){inset:-34px;animation-delay:1.2s;opacity:.25}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.05);opacity:1}}
 .mic-core{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2a2218,#13161d);border:1px solid #3a3020;display:flex;align-items:center;justify-content:center;font-size:2rem;position:relative;z-index:1}
-.home-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,8vw,4rem);font-weight:700;color:var(--gold);line-height:1.05;text-align:center;letter-spacing:-.5px}
+.home-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,8vw,4rem);font-weight:700;color:var(--gold);line-height:1.05;text-align:center;letter-spacing:-.5px}
 .home-sub{font-size:1rem;color:#a09888;text-align:center}
 .home-desc{font-size:.9rem;color:var(--text-muted);line-height:1.75;text-align:center;max-width:400px}
-.btn-start{background:var(--gold);color:#0c0e13;border:none;border-radius:100px;padding:1rem 2.4rem;font-size:1rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;display:flex;align-items:center;gap:.6rem;transition:all .2s}
+.btn-start{background:var(--gold);color:#0c0e13;border:none;border-radius:100px;padding:1rem 2.4rem;font-size:1rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;display:flex;align-items:center;gap:.6rem;transition:all .2s;position:relative;z-index:9999;pointer-events:auto}
 .btn-start:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,160,32,.3)}
 .btn-start:active{transform:translateY(0)}
 .btn-arrow{transition:transform .2s}
 .btn-start:hover .btn-arrow{transform:translateX(4px)}
 .proof{font-size:.75rem;color:var(--text-dim);display:flex;align-items:center;gap:.5rem}
 .proof-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.5}
+
+/* ── PROGRESS ── */
 .progress-wrap{width:100%;max-width:560px}
 .progress-meta{display:flex;justify-content:space-between;margin-bottom:.5rem}
 .prog-cat{font-size:.68rem;font-weight:600;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
 .prog-step{font-size:.75rem;color:var(--text-dim)}
 .progress-track{height:2px;background:var(--surface3);border-radius:2px;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(90deg,#c07010,var(--gold));border-radius:2px;transition:width .5s cubic-bezier(.16,1,.3,1)}
+
+/* ── QUESTION ── */
 .q-num{font-size:.7rem;font-weight:600;letter-spacing:.1em;color:var(--text-dim);text-transform:uppercase}
-.q-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:600;color:#f0ebe0;line-height:1.28;text-align:center;max-width:480px}
-.options{display:flex;flex-direction:column;gap:.65rem;width:100%;max-width:520px}
-.opt{display:flex;align-items:center;gap:.9rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.95rem 1.25rem;cursor:pointer;transition:all .22s;text-align:left;font-family:'DM Sans',sans-serif;font-size:.9rem;color:#b8b0a4;width:100%}
-.opt:hover{border-color:#4a3818;background:var(--surface2);color:var(--text);transform:translateX(4px)}
-.opt.selected{border-color:var(--gold);background:#1c1a0e;color:var(--gold);transform:translateX(4px)}
-.opt-badge{min-width:26px;height:26px;border-radius:50%;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;color:var(--text-dim);transition:all .2s;flex-shrink:0}
+.q-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.45rem,4.5vw,2rem);font-weight:600;color:#f0ebe0;line-height:1.3;text-align:center;max-width:480px}
+.options{display:flex;flex-direction:column;gap:.6rem;width:100%;max-width:520px}
+
+/* opções — mobile-first com toque generoso */
+.opt{display:flex;align-items:center;gap:.85rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;cursor:pointer;transition:all .22s;text-align:left;font-family:'DM Sans',sans-serif;font-size:.95rem;color:#b8b0a4;width:100%;line-height:1.4;min-height:54px}
+.opt:hover{border-color:#4a3818;background:var(--surface2);color:var(--text);transform:translateX(3px)}
+.opt.selected{border-color:var(--gold);background:#1c1a0e;color:var(--gold);transform:translateX(3px)}
+.opt-badge{min-width:28px;height:28px;border-radius:50%;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--text-dim);transition:all .2s;flex-shrink:0}
 .opt:hover .opt-badge,.opt.selected .opt-badge{background:#3a2e10;color:var(--gold)}
 .opt-check{margin-left:auto;opacity:0;color:var(--gold);font-size:1.1rem;transition:opacity .2s;flex-shrink:0}
 .opt.selected .opt-check{opacity:1}
-.result-wrap{width:100%;max-width:520px;max-height:80vh;overflow-y:auto;display:flex;flex-direction:column;gap:1rem;padding-bottom:1rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+
+/* ── TRANSIÇÃO ENTRE BLOCOS ── */
+.transition-card{background:var(--surface);border:1px solid var(--border-hover);border-radius:14px;padding:1.3rem 1.5rem;max-width:480px;width:100%;display:flex;flex-direction:column;gap:.5rem;text-align:center}
+.transition-icon{font-size:1.8rem}
+.transition-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--gold)}
+.transition-body{font-size:.88rem;color:var(--text-muted);line-height:1.7}
+.btn-next{background:var(--gold);color:#0c0e13;border:none;border-radius:100px;padding:.75rem 2rem;font-size:.92rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;align-self:center}
+.btn-next:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+/* ── RESULT ── */
+.result-wrap{width:100%;max-width:520px;display:flex;flex-direction:column;gap:1rem;padding-bottom:1.5rem}
 .result-hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:.5rem 0}
 .result-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(232,160,32,.12);border:1px solid var(--gold-dim);border-radius:100px;padding:.3rem .9rem;font-size:.65rem;font-weight:700;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
 .result-icon-wrap{position:relative;margin:.4rem 0}
@@ -63,25 +84,52 @@ canvas#waves{position:fixed;inset:0;width:100%;height:100%;opacity:.13;pointer-e
 @keyframes glow{0%,100%{opacity:.6}50%{opacity:1}}
 .result-icon{font-size:2.6rem;position:relative;z-index:1}
 .result-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1.1}
-.result-lead{font-size:.9rem;color:#a09888;line-height:1.75;max-width:420px;margin:0 auto}
+.result-lead{font-size:.92rem;color:#a09888;line-height:1.8;max-width:440px;margin:0 auto}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.55rem}
 .card-label{font-size:.6rem;font-weight:700;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:.5rem}
 .card-label::after{content:'';flex:1;height:1px;background:var(--border-hover)}
-.card-body{font-size:.88rem;color:#9a9288;line-height:1.7}
-.score-row{display:flex;flex-direction:column;gap:.35rem}
-.score-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-muted)}
-.score-track{height:4px;background:var(--surface3);border-radius:4px;overflow:hidden}
-.score-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#c07010,var(--gold));transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+.card-body{font-size:.88rem;color:#9a9288;line-height:1.75}
+.area-grid{display:flex;flex-direction:column;gap:.55rem;width:100%}
+.area-card{display:flex;align-items:center;gap:.85rem;border:1px solid;border-radius:10px;padding:.85rem 1rem}
+.area-dot{font-size:1.6rem;line-height:1;flex-shrink:0}
+.area-info{display:flex;flex-direction:column;gap:.15rem}
+.area-name{font-size:.8rem;font-weight:600;color:var(--text-muted);letter-spacing:.04em}
+.area-label{font-size:.95rem;font-weight:700}
+.area-desc{font-size:.75rem;color:var(--text-dim)}
 .quote-block{border-left:2px solid var(--gold);padding:.7rem 1rem;background:rgba(232,160,32,.04);border-radius:0 8px 8px 0}
 .quote-block p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:#c8c0b0;line-height:1.55}
 .cta-card{background:linear-gradient(135deg,#1a1a0e,var(--surface));border:1px solid #3a3018;border-radius:12px;padding:1.25rem;display:flex;flex-direction:column;gap:.9rem}
-.cta-text{font-size:.88rem;color:#9a9288;line-height:1.7}
+.cta-text{font-size:.88rem;color:#9a9288;line-height:1.75}
 .cta-text strong{color:var(--gold)}
-.btn-cta{display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--gold);color:#0c0e13;border:none;border-radius:100px;padding:.85rem 1.8rem;font-size:.95rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s}
+.btn-cta{display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--gold);color:#0c0e13;border:none;border-radius:100px;padding:.9rem 1.8rem;font-size:.95rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s}
 .btn-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 6px 24px rgba(232,160,32,.3)}
 .btn-retry{background:none;border:none;color:var(--text-dim);font-size:.78rem;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:.3rem;transition:color .2s;padding:.5rem;margin-top:.25rem;align-self:center}
 .btn-retry:hover{color:var(--text-muted)}
-@media(max-width:480px){.home-title{font-size:2.4rem}.q-text{font-size:1.4rem}.result-title{font-size:1.7rem}.btn-start{padding:.9rem 1.8rem;font-size:.92rem}.opt{padding:.85rem 1rem;font-size:.85rem}}
+
+/* perfil-tag no resultado */
+.perfil-tag{font-size:.8rem;color:var(--text-muted);font-style:italic;margin-top:-.2rem}
+
+/* ── MOBILE ── */
+@media(max-width:500px){
+  .app{padding:1.5rem .8rem;align-items:flex-start;padding-top:3rem}
+  .screen{position:relative;padding:0}
+  .home-title{font-size:2.5rem}
+  .q-text{font-size:1.4rem}
+  .result-title{font-size:1.75rem}
+  .btn-start{padding:.95rem 1.8rem;font-size:.95rem;width:100%;justify-content:center}
+  .opt{padding:1rem 1rem;font-size:.93rem;min-height:58px}
+  .options{gap:.55rem}
+  .progress-wrap{max-width:100%}
+  .result-wrap{max-width:100%}
+  .cta-card{padding:1rem}
+  .btn-cta{padding:.85rem 1.4rem;font-size:.92rem}
+  .transition-card{padding:1.1rem 1.2rem}
+  .card{padding:.95rem 1rem}
+}
+@media(max-width:360px){
+  .home-title{font-size:2.1rem}
+  .opt{font-size:.88rem}
+}
 </style>
 </head>
 <body>
@@ -93,23 +141,23 @@ canvas#waves{position:fixed;inset:0;width:100%;height:100%;opacity:.13;pointer-e
 
   <!-- HOME -->
   <div class="screen" id="s-home" style="display:flex">
-    <div class="home-eyebrow">Diagn&#243;stico Vocal</div>
+    <div class="home-eyebrow">Diagnóstico Vocal</div>
     <div class="mic-wrap">
       <div class="mic-ring"></div>
       <div class="mic-ring"></div>
       <div class="mic-ring"></div>
-      <div class="mic-core">&#127908;</div>
+      <div class="mic-core">🎤</div>
     </div>
     <h1 class="home-title">Descubra o que<br>trava a sua voz</h1>
-    <p class="home-sub">7 perguntas. Resultado imediato. Zero julgamento.</p>
-    <p class="home-desc">Cantores que entendem o pr&#243;prio padr&#227;o vocal evoluem muito mais r&#225;pido. Responda com honestidade &#8212; n&#227;o existe resposta certa ou errada.</p>
+    <p class="home-sub">Análise personalizada · Resultado imediato</p>
+    <p class="home-desc">Responda com honestidade — cada pergunta foi pensada para mapear exatamente o que está impedindo a sua voz de fluir. Não existe resposta certa ou errada.</p>
     <button class="btn-start" id="btn-start-quiz">
-      Come&#231;ar o Diagn&#243;stico
+      Iniciar minha análise vocal
       <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
     <div class="proof">
       <div class="proof-dot"></div>
-      Mais de 2.000 cantores j&#225; fizeram este diagn&#243;stico
+      Mais de 2.000 cantores já fizeram este diagnóstico
     </div>
   </div>
 
@@ -129,6 +177,16 @@ canvas#waves{position:fixed;inset:0;width:100%;height:100%;opacity:.13;pointer-e
     <div class="options" id="options"></div>
   </div>
 
+  <!-- TRANSITION -->
+  <div class="screen" id="s-transition" style="display:none;gap:1rem">
+    <div class="transition-card" id="trans-card">
+      <div class="transition-icon" id="trans-icon"></div>
+      <div class="transition-title" id="trans-title"></div>
+      <p class="transition-body" id="trans-body"></p>
+      <button class="btn-next" id="btn-trans-next">Continuar →</button>
+    </div>
+  </div>
+
   <!-- RESULT -->
   <div class="screen" id="s-result" style="display:none">
     <div class="result-wrap" id="result-content"></div>
@@ -137,70 +195,313 @@ canvas#waves{position:fixed;inset:0;width:100%;height:100%;opacity:.13;pointer-e
 </div>
 
 <script>
-const Qs = [
-  {cat:"Percepção de Esforço Vocal",text:"Quando você canta notas agudas, sente que precisa fazer força no pescoço ou na garganta?",opts:["Sim — parece que tudo trava","Às vezes, depende da música","Não, sai com naturalidade"],scores:[2,1,0]},
-  {cat:"Percepção de Esforço Vocal",text:"Depois de cantar por um tempo, você costuma ficar rouco(a), com dor ou muito cansado(a)?",opts:["Sim, com frequência","Às vezes","Raramente ou nunca"],scores:[2,1,0]},
-  {cat:"Percepção de Esforço Vocal",text:"Para alcançar notas mais altas, você sente que precisa \"empurrar\" ou \"gritar\" a voz?",opts:["Sim, quase sempre","Às vezes","Não — flui naturalmente"],scores:[2,1,0]},
-  {cat:"Origem e Qualidade do Som",text:"Quando você canta, onde sente que sua voz \"nasce\"?",opts:["Na garganta — com peso e esforço","No peito, mas sobe com força","Leve, como se vibrasse no rosto ou na cabeça"],scores:[2,1,0]},
-  {cat:"Origem e Qualidade do Som",text:"Ao tentar notas mais altas, sua voz muda de qualidade — quebra, some ou enfraquece?",opts:["Sim, claramente","Às vezes","Não, mantém o mesmo corpo"],scores:[2,1,0]},
-  {cat:"Estabilidade e Consciência Técnica",text:"Você sente que tem controle sobre sua voz ou ela \"escapa\" em certos momentos?",opts:["Escapa ou desestabiliza com frequência","Às vezes me pego sem controle","Tenho bastante controle"],scores:[2,1,0]},
-  {cat:"Estabilidade e Consciência Técnica",text:"Você consegue identificar quando está usando voz de peito, voz mista ou voz de cabeça?",opts:["Não faço ideia","Já ouvi falar, mas não sei aplicar","Sim, identifico e consigo alternar"],scores:[2,1,0]}
-];
+// ─────────────────────────────────────────────
+// URLs dos cursos
+// ─────────────────────────────────────────────
+var URL_START  = "https://lorencoelho.com.br/startvocal";
+var URL_REALIZA = "https://lorencoelho.com.br/realiza";
 
-const RESULTS = [
+// ─────────────────────────────────────────────
+// PERGUNTAS
+// Tipo "profile" → não pontuam, salvam em profileData
+// Tipo "score"   → pontuam normalmente
+// Tipo "emotion" → não pontuam, salvam em emotionData
+// ─────────────────────────────────────────────
+var Qs = [
+
+  // ── BLOCO 0: PERFIL (3 perguntas) ──
   {
-    range:[0,5],icon:"&#10024;",title:"Voz com Suporte",badge:"Estágio Avançado",
-    lead:"Sua voz já tem boa liberdade e consciência técnica. Você vai além do básico — agora é hora de refinar, expandir extensão e desenvolver recursos expressivos mais sofisticados.",
-    oq:"Seu suporte e colocação vocal estão funcionando bem. Você sente a ressonância, tem controle da passagem de registro e não depende de força para alcançar agudos.",
-    aprender:"Foco em dinâmicas, vibrato, agilidade vocal e ampliação de extensão. Técnicas avançadas de mistura e expressividade são seus próximos passos.",
-    quote:"\"Quem chegou até aqui sabe que técnica não é limitação — é liberdade com consciência.\"",
-    cta:"Explorar técnicas avançadas"
+    type:"profile", key:"tempo",
+    cat:"Seu Perfil",
+    text:"Antes de começar: há quanto tempo você canta?",
+    opts:[
+      "Estou começando agora",
+      "Menos de 1 ano",
+      "Entre 1 e 3 anos",
+      "Mais de 3 anos"
+    ],
+    scores:[0,0,0,0]
   },
   {
-    range:[6,10],icon:"&#127754;",title:"Voz em Transição",badge:"Estágio Intermediário",
-    lead:"Você já tem alguma consciência vocal, mas ainda enfrenta instabilidades — especialmente na passagem de registro e nos agudos. Está no ponto exato de evolução.",
-    oq:"Sua voz oscila entre momentos de fluidez e travamento. A passagem entre registros (do peito para a cabeça) é o ponto mais desafiador. Às vezes funciona, às vezes não.",
-    aprender:"Você precisa trabalhar a mistura vocal (voz mista) para suavizar a passagem de registro. Com isso, os agudos ficam mais acessíveis e o cansaço diminui muito.",
-    quote:"\"A passagem de registro não é um obstáculo — é um convite para expandir quem você é vocalmente.\"",
-    cta:"Trabalhar a transição de registro"
+    type:"profile", key:"ambiente",
+    cat:"Seu Perfil",
+    text:"Em qual ambiente você mais canta?",
+    opts:[
+      "Igreja / ministério de louvor",
+      "Em casa, por prazer",
+      "Redes sociais / YouTube",
+      "Banda, eventos ou shows"
+    ],
+    scores:[0,0,0,0]
   },
   {
-    range:[11,14],icon:"&#128274;",title:"Voz Presa na Garganta",badge:"Estágio Inicial",
-    lead:"Sua voz é ancorada na garganta. Ao cantar — especialmente nos agudos — seus músculos do pescoço tensionam demais, criando esforço e limitando seu alcance.",
-    oq:"Quando a voz fica presa na garganta, cada nota aguda exige mais força do que deveria. Isso causa rouquidão, cansaço e a sensação de que sua voz tem um teto muito baixo. Mas não é sua voz que tem limite — é a estratégia que você está usando.",
-    aprender:"Você precisa aprender a tirar a pressão da garganta e distribuir o som de forma mais equilibrada. Com os exercícios certos, sua voz vai fluir com muito mais facilidade e menos esforço.",
-    quote:"\"Isso não significa que você canta mal. Significa que você aprendeu a cantar do jeito errado — e isso tem solução.\"",
-    cta:"Conhecer o Start Vocal"
+    type:"profile", key:"estudou",
+    cat:"Seu Perfil",
+    text:"Você já teve aula de canto ou estudou técnica vocal antes?",
+    opts:[
+      "Nunca estudei",
+      "Aprendi algumas coisas sozinho(a)",
+      "Fiz poucas aulas formais",
+      "Já estudei bastante técnica vocal"
+    ],
+    scores:[0,0,0,0]
+  },
+
+  // ── BLOCO 1: EMOÇÃO / FRUSTRAÇÃO (2 perguntas) ──
+  {
+    type:"emotion", key:"incomoda",
+    cat:"Sua Experiência",
+    text:"O que mais te incomoda na sua voz hoje?",
+    opts:[
+      "Não consigo alcançar notas agudas",
+      "Minha voz cansa ou dói rapidinho",
+      "Falta potência — parece fraca",
+      "Falta controle e segurança ao cantar",
+      "Não sinto nenhum desses incômodos"
+    ],
+    scores:[0,0,0,0,0]
+  },
+  {
+    type:"emotion", key:"sentimento",
+    cat:"Sua Experiência",
+    text:"Qual dessas frases combina mais com você agora?",
+    opts:[
+      "\"Parece que minha voz tem um teto e não passa\"",
+      "\"Consigo cantar, mas sinto que não sou livre\"",
+      "\"Fico travado(a) quando a música fica difícil\"",
+      "\"Tenho potencial, mas não sei como desenvolver\"",
+      "Nenhuma dessas — me sinto bem ao cantar"
+    ],
+    scores:[0,0,0,0,0]
+  },
+
+  // ── BLOCO 2: DIAGNÓSTICO TÉCNICO (7 perguntas) ──
+  {
+    type:"score",
+    cat:"Esforço Vocal",
+    text:"Quando você canta notas agudas, sente que precisa fazer força no pescoço ou na garganta?",
+    opts:[
+      "Sim — parece que tudo trava",
+      "Às vezes, depende da música",
+      "Não, sai com naturalidade"
+    ],
+    scores:[2,1,0]
+  },
+  {
+    type:"score",
+    cat:"Esforço Vocal",
+    text:"Depois de cantar por um tempo, você costuma ficar rouco(a), com dor ou muito cansado(a)?",
+    opts:[
+      "Sim, com frequência",
+      "Às vezes",
+      "Raramente ou nunca"
+    ],
+    scores:[2,1,0]
+  },
+  {
+    type:"score",
+    cat:"Esforço Vocal",
+    text:"Para alcançar notas mais altas, você sente que precisa \"empurrar\" ou \"gritar\" a voz?",
+    opts:[
+      "Sim, quase sempre",
+      "Às vezes",
+      "Não — flui naturalmente"
+    ],
+    scores:[2,1,0]
+  },
+  {
+    type:"score",
+    cat:"Qualidade do Som",
+    text:"Quando você canta, onde sente que sua voz \"nasce\"?",
+    opts:[
+      "Na garganta — com peso e esforço",
+      "No peito, mas sobe com força",
+      "Leve, como se vibrasse no rosto ou na cabeça"
+    ],
+    scores:[2,1,0]
+  },
+  {
+    type:"score",
+    cat:"Qualidade do Som",
+    text:"Ao tentar notas mais altas, sua voz muda de qualidade — quebra, some ou enfraquece?",
+    opts:[
+      "Sim, claramente",
+      "Às vezes",
+      "Não, mantém o mesmo corpo"
+    ],
+    scores:[2,1,0]
+  },
+  {
+    type:"score",
+    cat:"Consciência Técnica",
+    text:"Você sente que tem controle sobre sua voz ou ela \"escapa\" em certos momentos?",
+    opts:[
+      "Escapa ou desestabiliza com frequência",
+      "Às vezes me pego sem controle",
+      "Tenho bastante controle"
+    ],
+    scores:[2,1,0]
+  },
+  {
+    type:"score",
+    cat:"Consciência Técnica",
+    text:"Você consegue identificar quando está usando voz de peito, voz mista ou voz de cabeça?",
+    opts:[
+      "Não faço ideia do que é isso",
+      "Já ouvi falar, mas não sei aplicar",
+      "Sim, identifico e consigo alternar"
+    ],
+    scores:[2,1,0]
   }
 ];
 
-var CTA_URL = "https://seusite.com/start-vocal";
+// ─────────────────────────────────────────────
+// RESULTADOS
+// ─────────────────────────────────────────────
+var RESULTS = [
+  {
+    range:[0,5],
+    icon:"✨",
+    title:"Voz com Liberdade",
+    badge:"Estágio Avançado",
+    lead:"Sua voz já tem boa liberdade e consciência técnica. Você vai além do básico — agora é hora de refinar, expandir extensão e desenvolver recursos expressivos mais sofisticados.",
+    oq:"Seu suporte e colocação vocal estão funcionando bem. Você sente a ressonância, tem controle da passagem de registro e não depende de força para alcançar agudos. Isso é resultado de uma relação saudável com a técnica.",
+    aprender:"Foco em dinâmicas, vibrato, agilidade vocal e ampliação de extensão. Técnicas avançadas de mistura e expressividade são seus próximos passos — e o caminho fica ainda mais interessante a partir daqui.",
+    quote:"\"Quem chegou até aqui sabe que técnica não é limitação — é liberdade com consciência.\"",
+    ctaLabel:"Conhecer o Realiza",
+    ctaUrl: "URL_REALIZA",
+    ctaText:"O curso <strong>Realiza</strong> é o caminho completo para cantores que já têm base técnica e querem alcançar o próximo nível — com domínio real da voz, expressividade e repertório.",
+    curso:"realiza"
+  },
+  {
+    range:[6,10],
+    icon:"🌊",
+    title:"Voz em Transição",
+    badge:"Estágio Intermediário",
+    lead:"Você já tem alguma consciência vocal, mas ainda enfrenta instabilidades — especialmente na passagem de registro e nos agudos. Está no ponto exato de evolução.",
+    oq:"Sua voz oscila entre momentos de fluidez e travamento. A passagem entre registros — do peito para a cabeça — é o ponto mais desafiador. Às vezes funciona, às vezes não. Isso é sinal de que sua voz está tentando se reorganizar, mas sem a técnica certa para guiá-la.",
+    aprender:"Você precisa trabalhar a mistura vocal para suavizar a passagem de registro. Com isso, os agudos ficam mais acessíveis, o cansaço diminui e a voz ganha consistência — independente do repertório.",
+    quote:"\"A passagem de registro não é um obstáculo — é um convite para expandir quem você é vocalmente.\"",
+    ctaLabel:"Conhecer o Start Vocal",
+    ctaUrl: "URL_START",
+    ctaText:"O curso <strong>Start Vocal</strong> foi desenvolvido exatamente para cantores nesse estágio — com exercícios práticos para organizar a passagem, reduzir o esforço e estabilizar a voz nos agudos.",
+    curso:"start"
+  },
+  {
+    range:[11,14],
+    icon:"🔒",
+    title:"Voz Presa na Garganta",
+    badge:"Estágio Inicial",
+    lead:"Sua voz está ancorada na garganta. Cada nota aguda exige mais força do que deveria — e isso cria um ciclo de esforço, cansaço e travamento. Mas não é sua voz que tem limite: é a estratégia que você está usando.",
+    oq:"Quando a voz fica presa na garganta, os músculos do pescoço compensam o que o suporte e a ressonância deveriam fazer. Resultado: rouquidão, dor e a sensação de que há um teto invisível. Isso não tem nada a ver com talento — tem tudo a ver com padrão vocal aprendido.",
+    aprender:"Você precisa aprender a tirar a pressão da garganta e redistribuir o som com suporte e ressonância. Com os exercícios certos, a voz passa a fluir com muito mais facilidade — sem dor e sem esforço.",
+    quote:"\"Isso não significa que você canta mal. Significa que você aprendeu a cantar do jeito errado — e isso tem solução.\"",
+    ctaLabel:"Conhecer o Start Vocal",
+    ctaUrl: "URL_START",
+    ctaText:"O curso <strong>Start Vocal</strong> foi criado exatamente para pessoas nesse estágio. Ele ensina como tirar a pressão da garganta, organizar o apoio e cantar com mais leveza — mesmo que hoje sua voz trave.",
+    curso:"start"
+  }
+];
+
+// ─────────────────────────────────────────────
+// TRANSIÇÕES entre blocos
+// ─────────────────────────────────────────────
+// Ocorre antes do índice indicado em "before"
+var TRANSITIONS = [
+  {
+    before: 3, // antes da pergunta de índice 3 (bloco emoção)
+    icon:"🎯",
+    title:"Entendido.",
+    body: function(pd) {
+      var env = pd.ambiente || "";
+      var map = {
+        "Igreja / ministério de louvor":"de ministério",
+        "Em casa, por prazer":"que canta por prazer",
+        "Redes sociais / YouTube":"das redes sociais",
+        "Banda, eventos ou shows":"de palco"
+      };
+      var tag = map[env] || "";
+      var tempo = pd.tempo || "";
+      var tempoTag = {
+        "Estou começando agora":"que está começando agora",
+        "Menos de 1 ano":"com menos de um ano cantando",
+        "Entre 1 e 3 anos":"com alguns anos de experiência",
+        "Mais de 3 anos":"com bastante tempo de prática"
+      }[tempo] || "";
+      var base = "Agora vamos entender melhor a sua experiência — o que você sente quando canta e onde estão os pontos de tensão.";
+      if(tag && tempoTag) {
+        return "Perfil identificado: cantor " + tag + " " + tempoTag + ". " + base;
+      }
+      return base;
+    },
+    btnLabel:"Continuar"
+  },
+  {
+    before: 5, // antes do bloco técnico
+    icon:"🔬",
+    title:"Quase lá.",
+    body: function(pd, ed) {
+      var incomoda = ed.incomoda || "";
+      if(incomoda) {
+        return "Você mencionou que \"" + incomoda.toLowerCase().replace(/^\"?|\"?$/g,'') + "\". Isso é exatamente o que as próximas perguntas vão investigar. Responda com a maior honestidade possível.";
+      }
+      return "Agora vamos à parte técnica do seu diagnóstico. Responda com honestidade — essas perguntas vão revelar o padrão real da sua voz.";
+    },
+    btnLabel:"Analisar minha voz"
+  }
+];
+
+// ─────────────────────────────────────────────
+// ESTADO
+// ─────────────────────────────────────────────
 var cur = 0;
 var scores = [];
+var profileData = {};
+var emotionData = {};
+// Mapear quais perguntas são do tipo score para calcular índices de categoria
+var scoreIndexMap = []; // vai guardar {qIdx, catGroup}
 
-function showScreen(id) {
-  var ids = ['s-home','s-question','s-result'];
-  for (var i = 0; i < ids.length; i++) {
-    var el = document.getElementById(ids[i]);
-    if (el) {
-      if (ids[i] === id) {
-        el.style.display = 'flex';
-        el.style.opacity = '1';
-      } else {
-        el.style.display = 'none';
-        el.style.opacity = '0';
-      }
+function buildScoreMap() {
+  var g = 0;
+  var groups = [
+    {label:"Esforço Vocal", count:3},
+    {label:"Qualidade do Som", count:2},
+    {label:"Consciência Técnica", count:2}
+  ];
+  var gi = 0, gc = 0;
+  for(var i=0;i<Qs.length;i++){
+    if(Qs[i].type==="score"){
+      scoreIndexMap.push({qIdx:i, group:groups[gi].label});
+      gc++;
+      if(gc>=groups[gi].count){gi++;gc=0;}
     }
   }
 }
+buildScoreMap();
 
-function startQuiz() {
-  cur = 0;
-  scores = [];
-  renderQ();
-  showScreen('s-question');
+// ─────────────────────────────────────────────
+// CONTAGEM DE PERGUNTAS para o progress
+// ─────────────────────────────────────────────
+var totalDisplayed = Qs.length; // contamos todas
+
+// ─────────────────────────────────────────────
+// TELAS
+// ─────────────────────────────────────────────
+function showScreen(id) {
+  var ids = ['s-home','s-question','s-transition','s-result'];
+  for(var i=0;i<ids.length;i++){
+    var el = document.getElementById(ids[i]);
+    if(el){
+      if(ids[i]===id){el.style.display='flex';el.style.opacity='1';}
+      else{el.style.display='none';el.style.opacity='0';}
+    }
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
+// ─────────────────────────────────────────────
+// RENDER PERGUNTA
+// ─────────────────────────────────────────────
 function renderQ() {
   var q = Qs[cur];
   document.getElementById('q-cat').textContent = q.cat;
@@ -208,93 +509,191 @@ function renderQ() {
   document.getElementById('q-num').textContent = 'Pergunta ' + (cur+1 < 10 ? '0' : '') + (cur+1);
   document.getElementById('q-text').textContent = q.text;
   document.getElementById('prog-fill').style.width = Math.round((cur/Qs.length)*100) + '%';
-  var labels = ['A','B','C'];
+  var labels = ['A','B','C','D','E'];
   var el = document.getElementById('options');
   el.innerHTML = '';
-  for (var i = 0; i < q.opts.length; i++) {
-    (function(idx) {
+  for(var i=0;i<q.opts.length;i++){
+    (function(idx){
       var b = document.createElement('button');
       b.className = 'opt';
-      b.innerHTML = '<span class="opt-badge">'+labels[idx]+'</span>'+q.opts[idx]+'<span class="opt-check">&#10003;</span>';
-      b.addEventListener('click', function() { pick(idx, b); });
+      b.innerHTML = '<span class="opt-badge">'+labels[idx]+'</span>'+q.opts[idx]+'<span class="opt-check">✓</span>';
+      b.addEventListener('click', function(){ pick(idx, b); });
       el.appendChild(b);
     })(i);
   }
+  showScreen('s-question');
 }
 
+// ─────────────────────────────────────────────
+// PICK
+// ─────────────────────────────────────────────
 function pick(i, btn) {
   var opts = document.querySelectorAll('.opt');
-  for (var j = 0; j < opts.length; j++) opts[j].classList.remove('selected');
+  for(var j=0;j<opts.length;j++) opts[j].classList.remove('selected');
   btn.classList.add('selected');
-  scores[cur] = Qs[cur].scores[i];
-  setTimeout(function() {
+
+  var q = Qs[cur];
+  // Salvar dados de perfil / emoção
+  if(q.type==="profile") profileData[q.key] = q.opts[i];
+  if(q.type==="emotion") emotionData[q.key] = q.opts[i];
+  // Salvar score (apenas perguntas técnicas pontuam)
+  scores[cur] = q.scores[i];
+
+  setTimeout(function(){
     cur++;
-    if (cur < Qs.length) renderQ();
-    else showResult();
-  }, 400);
+    // Checar se há transição antes desta pergunta
+    var trans = getTransition(cur);
+    if(trans){
+      showTransition(trans);
+    } else if(cur < Qs.length){
+      renderQ();
+    } else {
+      showResult();
+    }
+  }, 380);
 }
 
+function getTransition(idx){
+  for(var i=0;i<TRANSITIONS.length;i++){
+    if(TRANSITIONS[i].before===idx) return TRANSITIONS[i];
+  }
+  return null;
+}
+
+// ─────────────────────────────────────────────
+// TRANSIÇÃO
+// ─────────────────────────────────────────────
+function showTransition(t){
+  document.getElementById('trans-icon').textContent = t.icon;
+  document.getElementById('trans-title').textContent = t.title;
+  var body = typeof t.body==='function' ? t.body(profileData, emotionData) : t.body;
+  document.getElementById('trans-body').textContent = body;
+  document.getElementById('btn-trans-next').textContent = t.btnLabel + ' →';
+  showScreen('s-transition');
+}
+
+document.getElementById('btn-trans-next').addEventListener('click', function(){
+  if(cur < Qs.length) renderQ();
+  else showResult();
+});
+
+// ─────────────────────────────────────────────
+// RESULTADO
+// ─────────────────────────────────────────────
 function showResult() {
+  // Somar apenas scores das perguntas tipo "score"
   var total = 0;
-  for (var i = 0; i < scores.length; i++) total += scores[i];
-  var res = RESULTS[2];
-  for (var i = 0; i < RESULTS.length; i++) {
-    if (total >= RESULTS[i].range[0] && total <= RESULTS[i].range[1]) { res = RESULTS[i]; break; }
+  for(var i=0;i<Qs.length;i++){
+    if(Qs[i].type==="score" && scores[i] !== undefined) total += scores[i];
   }
-  var cats = [
-    {label:"Esfor&#231;o Vocal", s:scores[0]+scores[1]+scores[2], max:6},
-    {label:"Qualidade do Som", s:scores[3]+scores[4], max:4},
-    {label:"Consci&#234;ncia T&#233;cnica", s:scores[5]+scores[6], max:4}
+
+  var res = RESULTS[RESULTS.length-1];
+  for(var i=0;i<RESULTS.length;i++){
+    if(total>=RESULTS[i].range[0] && total<=RESULTS[i].range[1]){res=RESULTS[i];break;}
+  }
+
+  // Categorias (só perguntas score)
+  var catGroups = [
+    {label:"Esforço Vocal", s:0, max:6},
+    {label:"Qualidade do Som", s:0, max:4},
+    {label:"Consciência Técnica", s:0, max:4}
   ];
-  var catsHtml = '';
-  for (var i = 0; i < cats.length; i++) {
-    var pct = Math.round((cats[i].s/cats[i].max)*100);
-    catsHtml += '<div class="score-row"><div class="score-label"><span>'+cats[i].label+'</span><span>'+pct+'%</span></div><div class="score-track"><div class="score-fill" style="width:0%" data-w="'+pct+'%"></div></div></div>';
+  var groupMap = {"Esforço Vocal":0,"Qualidade do Som":1,"Consciência Técnica":2};
+  for(var i=0;i<scoreIndexMap.length;i++){
+    var sm = scoreIndexMap[i];
+    var sc = scores[sm.qIdx];
+    if(sc!==undefined) catGroups[groupMap[sm.group]].s += sc;
   }
+
+  // Tabela de níveis por área
+  var levelMap = [
+    { min:67, dot:'🔴', label:'Alta tensão',   desc:'Muita força sendo usada aqui',   color:'#c0392b', bg:'rgba(192,57,43,.1)',  border:'rgba(192,57,43,.25)' },
+    { min:34, dot:'🟡', label:'Moderado',       desc:'Alguns pontos de atenção',       color:'#d4a017', bg:'rgba(212,160,23,.1)', border:'rgba(212,160,23,.25)' },
+    { min:0,  dot:'🟢', label:'Saudável',       desc:'Boa liberdade nessa área',       color:'#27ae60', bg:'rgba(39,174,96,.1)',  border:'rgba(39,174,96,.25)'  }
+  ];
+  function getLevel(pct){
+    for(var k=0;k<levelMap.length;k++) if(pct>=levelMap[k].min) return levelMap[k];
+    return levelMap[levelMap.length-1];
+  }
+  var catsHtml = '<div class="area-grid">';
+  for(var i=0;i<catGroups.length;i++){
+    var pct = Math.round((catGroups[i].s/catGroups[i].max)*100);
+    var lv = getLevel(pct);
+    catsHtml +=
+      '<div class="area-card" style="background:'+lv.bg+';border-color:'+lv.border+'">' +
+        '<div class="area-dot">'+lv.dot+'</div>' +
+        '<div class="area-info">' +
+          '<div class="area-name">'+catGroups[i].label+'</div>' +
+          '<div class="area-label" style="color:'+lv.color+'">'+lv.label+'</div>' +
+          '<div class="area-desc">'+lv.desc+'</div>' +
+        '</div>' +
+      '</div>';
+  }
+  catsHtml += '</div>';
+
+  // Personalização por perfil
+  var ambienteTag = "";
+  var ambienteMap = {
+    "Igreja / ministério de louvor":"no ministério de louvor",
+    "Em casa, por prazer":"cantando em casa",
+    "Redes sociais / YouTube":"nas redes sociais",
+    "Banda, eventos ou shows":"no palco"
+  };
+  if(profileData.ambiente && ambienteMap[profileData.ambiente]) {
+    ambienteTag = '<p class="perfil-tag">Baseado no seu perfil: cantor(a) '+ambienteMap[profileData.ambiente]+'</p>';
+  }
+
+  // URL do CTA
+  var ctaUrl = res.ctaUrl === "URL_REALIZA" ? URL_REALIZA : URL_START;
+
   document.getElementById('result-content').innerHTML =
     '<div class="result-hero">' +
-      '<div class="result-badge">&#127919; '+res.badge+' &middot; Diagn&oacute;stico Vocal</div>' +
+      '<div class="result-badge">🎯 '+res.badge+' · Diagnóstico Vocal</div>' +
       '<div class="result-icon-wrap"><div class="result-icon-glow"></div><div class="result-icon">'+res.icon+'</div></div>' +
       '<h2 class="result-title">'+res.title+'</h2>' +
+      ambienteTag +
       '<p class="result-lead">'+res.lead+'</p>' +
     '</div>' +
-    '<div class="card"><div class="card-label">Seu perfil por &aacute;rea</div>'+catsHtml+'</div>' +
-    '<div class="card"><div class="card-label">O que est&aacute; acontecendo</div><p class="card-body">'+res.oq+'</p></div>' +
-    '<div class="card"><div class="card-label">O que voc&ecirc; precisa agora</div><p class="card-body">'+res.aprender+'</p></div>' +
+    '<div class="card"><div class="card-label">Seu perfil por área</div>'+catsHtml+'</div>' +
+    '<div class="card"><div class="card-label">O que está acontecendo</div><p class="card-body">'+res.oq+'</p></div>' +
+    '<div class="card"><div class="card-label">O que você precisa agora</div><p class="card-body">'+res.aprender+'</p></div>' +
     '<div class="quote-block"><p>'+res.quote+'</p></div>' +
     '<div class="cta-card">' +
-      '<p class="cta-text">O curso <strong>Start Vocal</strong> foi criado exatamente para pessoas nesse est&aacute;gio. Ele ensina como tirar a press&atilde;o da garganta, organizar o apoio e cantar com mais leveza &mdash; mesmo que hoje sua voz trave.</p>' +
-      '<button class="btn-cta" id="btn-cta-result">'+res.cta+' &#8594;</button>' +
+      '<p class="cta-text">'+res.ctaText+'</p>' +
+      '<button class="btn-cta" id="btn-cta-result">'+res.ctaLabel+' →</button>' +
     '</div>' +
-    '<button class="btn-retry" id="btn-retry-quiz">&#8592; Refazer o diagn&oacute;stico</button>';
+    '<button class="btn-retry" id="btn-retry-quiz">← Refazer o diagnóstico</button>';
 
   showScreen('s-result');
 
-  setTimeout(function() {
-    var fills = document.querySelectorAll('.score-fill');
-    for (var i = 0; i < fills.length; i++) {
-      fills[i].style.width = fills[i].getAttribute('data-w');
-    }
+  setTimeout(function(){
     var btnCta = document.getElementById('btn-cta-result');
-    if (btnCta) btnCta.addEventListener('click', function() { window.open(CTA_URL,'_blank'); });
+    if(btnCta) btnCta.addEventListener('click', function(){ window.open(ctaUrl,'_blank'); });
     var btnRetry = document.getElementById('btn-retry-quiz');
-    if (btnRetry) btnRetry.addEventListener('click', function() { resetQuiz(); });
-  }, 500);
+    if(btnRetry) btnRetry.addEventListener('click', resetQuiz);
+  }, 200);
 }
 
-function resetQuiz() {
-  cur = 0;
-  scores = [];
-  renderQ();
+// ─────────────────────────────────────────────
+// RESET
+// ─────────────────────────────────────────────
+function resetQuiz(){
+  cur=0; scores=[]; profileData={}; emotionData={};
   showScreen('s-home');
 }
 
-// Listener no document inteiro em modo capture — pega o clique antes do Hotmart
-document.addEventListener('click', function(e) {
+function startQuiz(){
+  cur=0; scores=[]; profileData={}; emotionData={};
+  renderQ();
+}
+
+// ─────────────────────────────────────────────
+// BTN START — captura em fase de capture
+// ─────────────────────────────────────────────
+document.addEventListener('click', function(e){
   var el = e.target;
-  // Verifica o elemento clicado e seus pais (caso clique no SVG interno)
-  while (el && el !== document) {
-    if (el.id === 'btn-start-quiz') {
+  while(el && el!==document){
+    if(el.id==='btn-start-quiz'){
       e.preventDefault();
       e.stopImmediatePropagation();
       startQuiz();
@@ -302,24 +701,15 @@ document.addEventListener('click', function(e) {
     }
     el = el.parentNode;
   }
-}, true); // true = capture phase, roda antes de qualquer outro listener
+}, true);
 
-// Garantir que o botão nunca seja bloqueado por elemento sobreposto
-var _fix = setInterval(function() {
-  var btn = document.getElementById('btn-start-quiz');
-  if (btn) {
-    btn.style.position = 'relative';
-    btn.style.zIndex = '9999';
-    btn.style.pointerEvents = 'auto';
-    clearInterval(_fix);
-  }
-}, 50);
-
-// Ondas animadas
+// ─────────────────────────────────────────────
+// CANVAS ONDAS
+// ─────────────────────────────────────────────
 var canvas = document.getElementById('waves');
 var ctx = canvas.getContext('2d');
 var W, H, tick = 0;
-function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
 resize();
 window.addEventListener('resize', resize);
 var waveDefs = [
@@ -331,33 +721,35 @@ var waveDefs = [
   {amp:40,freq:.005,speed:.25,y:.35,alpha:.25},
   {amp:15,freq:.014,speed:.7,y:.68,alpha:.35}
 ];
-function drawWaves() {
+function drawWaves(){
   ctx.clearRect(0,0,W,H);
-  for (var wi = 0; wi < waveDefs.length; wi++) {
-    var w = waveDefs[wi];
+  for(var wi=0;wi<waveDefs.length;wi++){
+    var w=waveDefs[wi];
     ctx.beginPath();
-    for (var x = 0; x <= W; x += 2) {
-      var y = H*w.y + Math.sin(x*w.freq+tick*w.speed)*w.amp + Math.sin(x*w.freq*.7+tick*w.speed*.8)*w.amp*.4;
-      if (x === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    for(var x=0;x<=W;x+=2){
+      var y=H*w.y+Math.sin(x*w.freq+tick*w.speed)*w.amp+Math.sin(x*w.freq*.7+tick*w.speed*.8)*w.amp*.4;
+      if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
     }
-    ctx.strokeStyle = 'rgba(232,160,32,'+w.alpha+')';
-    ctx.lineWidth = 1;
+    ctx.strokeStyle='rgba(232,160,32,'+w.alpha+')';
+    ctx.lineWidth=1;
     ctx.stroke();
   }
-  tick += .015;
+  tick+=.015;
   requestAnimationFrame(drawWaves);
 }
 drawWaves();
 
-// Partículas
+// ─────────────────────────────────────────────
+// PARTÍCULAS
+// ─────────────────────────────────────────────
 var pc = document.getElementById('particles');
-function mkParticle() {
-  var d = document.createElement('div');
-  d.className = 'particle';
-  var size = Math.random()*3+1, dur = Math.random()*8+6;
-  d.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+Math.random()*100+'%;bottom:'+Math.random()*20+'%;background:rgba(232,160,32,'+(Math.random()*.5+.1)+');animation-duration:'+dur+'s;animation-delay:'+Math.random()*3+'s;';
+function mkParticle(){
+  var d=document.createElement('div');
+  d.className='particle';
+  var size=Math.random()*3+1,dur=Math.random()*8+6;
+  d.style.cssText='width:'+size+'px;height:'+size+'px;left:'+Math.random()*100+'%;bottom:'+Math.random()*20+'%;background:rgba(232,160,32,'+(Math.random()*.5+.1)+');animation-duration:'+dur+'s;animation-delay:'+Math.random()*3+'s;';
   pc.appendChild(d);
-  setTimeout(function() { if(d.parentNode) d.parentNode.removeChild(d); }, (dur+3)*1000);
+  setTimeout(function(){ if(d.parentNode) d.parentNode.removeChild(d); },(dur+3)*1000);
 }
 setInterval(mkParticle, 700);
 </script>
